@@ -108,6 +108,7 @@ xcopy "$(SolutionDir)Assets\*" "$(OutDir)Assets\" /s /r /y /q</Command>
   <ItemGroup>
     <ClInclude Include="..\Inc\carlevel.h" />
     <ClInclude Include="..\Inc\mainmenu.h" />
+    <ClInclude Include="..\Inc\structs.h" />
     <ClInclude Include="..\Inc\utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
