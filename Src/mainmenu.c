@@ -1,4 +1,5 @@
 #include "cprocessing.h"
+#include "carlevel.h"
 #include "utils.h"
 
 void Main_Menu_Init()
@@ -17,14 +18,11 @@ void Main_Menu_Update()
 		CP_Vector mousePos = CP_Vector_Set(CP_Input_GetMouseX(), CP_Input_GetMouseY());
 
 
-		if (IsAreaClicked(CP_System_GetWindowWidth() / 2.0f, CP_System_GetWindowHeight() / 2.0f, 100, 50, mousePos.x, mousePos.y) > 0) {
-			CP_Engine_SetNextGameState(Car_Level_Init(), Car_Level_Update(), Car_Level_Exit());
+		if (IsAreaClicked((float)CP_System_GetWindowWidth() / 2.0f, (float)CP_System_GetWindowHeight() / 2.0f, 100, 50, mousePos.x, mousePos.y) > 0) {
+			CP_Engine_SetNextGameState(Car_Level_Init, Car_Level_Update, Car_Level_Exit);
 		}
 
-		int isClickedExit = 0;
-		isClickedExit += IsAreaClicked(CP_System_GetWindowWidth() / 2.0f, CP_System_GetWindowHeight() / 2.0f + 100, 100, 50, mousePos.x, mousePos.y);
-
-		if (isClickedExit > 0) {
+		if (IsAreaClicked((float)CP_System_GetWindowWidth() / 2.0f, (float)CP_System_GetWindowHeight() / 2.0f + 100.0f, 100, 50, mousePos.x, mousePos.y) > 0) {
 			CP_Engine_Terminate();
 		}
 	}
