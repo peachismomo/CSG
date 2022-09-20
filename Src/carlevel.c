@@ -3,6 +3,10 @@
 #include "utils.h"
 #include "mainmenu.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 Car redCar;
 Car greenCar;
 Car blueCar;
@@ -99,9 +103,7 @@ void Car_Level_Update()
 	}
 
 	//Get direction the car is facing based on the degrees from the positive x axis
-	CP_Vector directionVector = AngleToVector(selectedCar->direction * (float)(3.14159265358979323846 / (float)180));
-
-	CP_Graphics_DrawLine(300, 300, 300, 400);
+	CP_Vector directionVector = AngleToVector(selectedCar->direction * (float)(M_PI / (float)180));
 
 	if (CP_Input_KeyDown(KEY_S)) {
 		//move backwards (negate the vector)
