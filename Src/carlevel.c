@@ -1,11 +1,19 @@
 #include "cprocessing.h"
-#include "structs.h"
 #include "utils.h"
 #include "mainmenu.h"
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
+
+
+typedef struct Car
+{
+	CP_Vector position;
+	float direction;
+	CP_Color color;
+	int selected;
+} Car;
 
 Car redCar;
 Car greenCar;
