@@ -38,8 +38,5 @@
     <ClInclude Include="..\Inc\utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Inc\structs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
