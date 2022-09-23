@@ -1,6 +1,7 @@
 #include "cprocessing.h"
 #include "utils.h"
 #include "mainmenu.h"
+#include <math.h>
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -81,12 +82,31 @@ void Car_Level_Update()
 		CP_Graphics_DrawCircle(carArray[i].position.x, carArray[i].position.y, 50); //Diameter = 50
 
 		CP_Settings_Fill(CP_Color_Create(255, 255, 255, 255)); //triangle color set to white
-		CP_Vector point1 = CP_Vector_Set(carArray[i].position.x + 25, carArray[i].position.y); //Point 1 => the head of the triangle
-		CP_Vector point2 = CP_Vector_Set(carArray[i].position.x - 15, carArray[i].position.y + 15);
-		CP_Vector point3 = CP_Vector_Set(carArray[i].position.x - 15, carArray[i].position.y - 15);
-
+		
 		//Draw triangle and the rotation in degrees
-		CP_Graphics_DrawTriangleAdvanced(point1.x, point1.y, point2.x, point2.y, point3.x, point3.y, carArray[i].direction);
+
+		float deg1 = carArray[i].direction;
+		float deg2 = carArray[i].direction + 120;
+		float deg3 = carArray[i].direction + 240;
+
+		if (deg2 > 360) {
+			deg2 -= 360;
+		}
+
+		if (deg3 > 360) {
+			deg3 -= 360;
+		}
+
+		float x1 = carArray[i].position.x + 25 * cos(deg1 * M_PI / 180);
+		float y1 = carArray[i].position.y + 25 * sin(deg1 * M_PI / 180);
+
+		float x2 = carArray[i].position.x + 20 * cos(deg2 * M_PI / 180);
+		float y2 = carArray[i].position.y + 20 * sin(deg2 * M_PI / 180);
+
+		float x3 = carArray[i].position.x + 20 * cos(deg3 * M_PI / 180);
+		float y3 = carArray[i].position.y + 20 * sin(deg3 * M_PI / 180);
+
+		CP_Graphics_DrawTriangle(x1, y1, x2, y2, x3, y3);
 
 		//Set selected car
 		if (carArray[i].selected == 1) {
