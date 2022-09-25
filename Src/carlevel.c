@@ -120,6 +120,7 @@ void Car_Level_Update()
 			selectedCar->direction = 359;
 		}
 		else {
+			//turn at a rate of 100 degrees per second (anti clockwise)
 			selectedCar->direction -= 100 * CP_System_GetDt();
 		}
 	}
@@ -130,6 +131,7 @@ void Car_Level_Update()
 			selectedCar->direction = 0;
 		}
 		else {
+			//turn at a rate of 100 degrees per second (clockwise)
 			selectedCar->direction += 100 * CP_System_GetDt();
 		}
 	}
