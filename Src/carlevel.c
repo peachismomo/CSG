@@ -119,7 +119,9 @@ void Car_Level_Update()
 		if (selectedCar->direction == 0) {
 			selectedCar->direction = 359;
 		}
-		else selectedCar->direction--;
+		else {
+			selectedCar->direction -= 100 * CP_System_GetDt();
+		}
 	}
 
 	if (CP_Input_KeyDown(KEY_D)) {
@@ -127,7 +129,9 @@ void Car_Level_Update()
 		if (selectedCar->direction == 359) {
 			selectedCar->direction = 0;
 		}
-		else selectedCar->direction++;
+		else {
+			selectedCar->direction += 100 * CP_System_GetDt();
+		}
 	}
 
 	//Get direction the car is facing based on the degrees from the positive x axis
